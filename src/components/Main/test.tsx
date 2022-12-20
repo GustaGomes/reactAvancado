@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react'
 
-import Main from '.'
+import Main from './index'
 
 describe('<Main/>', () => {
     it('shold render the heading', () => {
@@ -9,6 +9,12 @@ describe('<Main/>', () => {
         expect( screen.getByRole('heading', {name: /react avançado/i }))
         .toBeInTheDocument()
 
-        expect( container.firstChild).toMatchSnapshot()
+        expect(container.firstChild).toMatchSnapshot()
+    })
+
+    it('should render the colors correctly', () => {
+        const { container } = render(<Main />)
+    
+        expect(container.firstChild).toHaveStyle({ 'background-color': '#06092b' })
     })
 })
